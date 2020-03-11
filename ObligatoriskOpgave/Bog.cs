@@ -9,30 +9,29 @@ namespace ObligatoriskOpgave
         private string _isbn13;
         public string Titel { get; set; }
 
-        public string Isbn13
+        public Bog(string titel, string forfatter, int sidetal, string isbn13)
         {
-            get => _isbn13;
-            set
-            {
-                if(value.Length < 13 || value.Length > 13) throw new ArgumentOutOfRangeException();
-                {
-                   _isbn13 = value;
-                }
-                
-            }
+            Titel = titel;
+            Forfatter = forfatter;
+            Sidetal = sidetal;
+            Isbn13 = isbn13;
         }
+
+        public Bog()
+        {
+
+        }
+
 
         public string Forfatter
         {
             get => _forfatter;
             set
             {
-                if(value.Length < 2) throw new ArgumentOutOfRangeException();
-                {
-                  _forfatter = value;
-                }
-                
+                if (value.Length < 2) throw new ArgumentOutOfRangeException();
+                _forfatter = value;
             }
+
         }
 
         public int Sidetal
@@ -40,12 +39,24 @@ namespace ObligatoriskOpgave
             get => _sidetal;
             set
             {
-                if (value < 4 || value > 1000) throw new ArgumentOutOfRangeException();
-                {
-                    _sidetal = value;
-                }
-                
+                if (value <= 4) throw new ArgumentOutOfRangeException();
+                if (value >= 1000) throw new ArgumentOutOfRangeException();
+                _sidetal = value;
+            }
+        }
+
+        public string Isbn13
+        {
+            get => _isbn13;
+
+            set
+
+            {
+                if (value.Length == 13) _isbn13 = value;
+                else throw new ArgumentOutOfRangeException();
+                _isbn13 = value;
             }
         }
     }
+
 }

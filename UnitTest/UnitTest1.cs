@@ -26,7 +26,7 @@ namespace UnitTest
         public void IsbnTest()
         {
             Bog bog = new Bog();
-            bog.Isbn13 = "asdfghjklqkwet";
+            bog.Isbn13 = "178";
         }
     }
 }
